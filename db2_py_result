@@ -1,0 +1,26 @@
+mysql> use TESTDB
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables
+    -> ;
++------------------+
+| Tables_in_TESTDB |
++------------------+
+| DEPARTMENT       |
+| employee         |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> describe DEPARTMENT;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| DEPTNO   | int(11)  | NO   | PRI | NULL    |       |
+| DEPTNAME | char(20) | YES  |     | NULL    |       |
+| LOCATION | char(20) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
