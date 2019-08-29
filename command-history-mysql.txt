@@ -1,0 +1,88 @@
+Download mysql community pack in .rpm format:
+
+  925  wget https://repo.mysql.com/mysql80-community-release-el7-1.noarch.rpm
+
+Insstall mysql community pack:
+
+  926  yum localinstall mysql80-community-release-el7-1.noarch.rpm
+  927  ps -aef | grep yum
+
+If yum throws error, check whether any other yum process is running, kill that process and try again
+also clean up yum metadata:
+
+  930  yum clean all
+  931  reboot
+
+After clean up try install:
+
+  933  yum localinstall mysql80-community-release-el7-1.noarch.rpm
+  934  yum repolist enabled | grep "mysql.*-community.*"
+  935  yum install mysql-community-server
+
+Start mysql service
+
+  936  systemctl status mysqld
+  937  systemctl start mysqld
+  938  systemctl status mysqld
+
+Check mysql version
+
+  939  mysql --version
+
+Check and keep a note of temporary password
+
+  940  grep 'temporary password' /var/log/mysqld.log
+
+Proceed with mysql secure installation
+
+  941  mysql_secure_installation
+  
+Post installation connect as root user
+
+  942  mysql -u root -p
+
+Install mysql python module
+
+  943  pip install MySQL-python
+  944  yum install python-pip python-dev libmysqlclient-dev -y
+  945  pip install MySQL-python
+
+Upgrade pip (if needed)
+  946  pip install --upgrade pip
+  947  pip install MySQL-python
+
+Create a directory to keep python scripts
+  955  mkdir python-script
+  956  cd python-script
+  957  pwd
+  958  cd 
+
+Setup PATH in .bash_profile to add python-script directory
+
+  959  vi .bash_profile
+  960  exit
+  963  mysql -u root -p
+  966  cd /etc
+
+Chcek my.cnf in etc directory, add and modify the entries(if needed)
+  967  vi my.cnf
+  968  cd
+  969  systemctl stop mysqld
+  970  systemctl start mysqld
+  971  systemctl status mysqld
+
+login to mysql as root, create additional users and provide privileges as needed.
+
+  972  mysql -u root -p
+  973  dir
+  974  python-script
+  975  cd python-script/
+  976  ls
+  977  vi db1.py
+  978  clear
+  979  ls
+  980  db1.py
+  981  python
+  982  mysql -u root -p
+  983  mysql -u testuser -p
+
